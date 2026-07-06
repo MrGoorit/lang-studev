@@ -32,7 +32,7 @@ const NewsList = () => {
       {data && (
         <List
           grid={{ gutter: 16, column: 3 }}
-          dataSource={data.data}
+          dataSource={data}
           renderItem={(item) => (
             <List.Item>
               <Card title={item.title}>{item.body}</Card>

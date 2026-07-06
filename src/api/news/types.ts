@@ -3,7 +3,3 @@ export interface NewsPost {
   title: string
   body: string
 }
-
-export interface NewsListResult {
-  data: NewsPost[]
-}

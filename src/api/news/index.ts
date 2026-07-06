@@ -1,8 +1,8 @@
 import request from '@/utils/request'
-import type { NewsListResult } from './types'
+import type { NewsPost } from './types'
 
 class NewsApi {
-  static posts(): Promise<NewsListResult> {
+  static posts(): Promise<NewsPost[]> {
     return request({
       url: '/posts',
       method: 'GET',
@@ -11,4 +11,4 @@ class NewsApi {
 }
 
 export default NewsApi
-export type { NewsPost, NewsListResult } from './types'
+export type { NewsPost } from './types'
