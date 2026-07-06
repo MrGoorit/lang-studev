@@ -7,6 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "preview": "vite preview",
     "prepare": "husky"
   },
@@ -14,6 +16,7 @@
     "@ant-design/icons": "^6.3.2",
     "@tanstack/react-query": "^5.101.2",
     "antd": "^6.5.0",
+    "axios": "^1.18.1",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-router-dom": "^7.18.1",
@@ -27,20 +30,23 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.3",
     "eslint": "^10.6.0",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react-hooks": "6.0.0-rc.2",
     "globals": "^17.7.0",
     "husky": "^9.1.7",
     "lint-staged": "^17.0.8",
     "oxlint": "^1.72.0",
+    "prettier": "^3.9.4",
     "tailwindcss": "^4.3.2",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.62.1",
     "vite": "^8.1.1"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx}": [
+    "src/**/*.{js,jsx,ts,tsx,css,json,md}": [
       "oxlint --fix",
-      "eslint --fix"
+      "eslint --fix",
+      "prettier --write"
     ]
   }
 }
