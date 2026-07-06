@@ -1,0 +1,11 @@
+{
+    "plugins": ["react", "typescript"],
+    "rules": {
+      "no-console": "warn",
+      "eqeqeq": "error",
+      "react/self-closing-comp": "error",
+      "react/jsx-no-useless-fragment": "error",
+      "typescript/no-empty-interface": "error"
+    },
+    "ignorePatterns": ["dist", "node_modules"]
+  }
