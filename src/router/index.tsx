@@ -3,6 +3,7 @@ import AppLayout from '@/layouts/AppLayout'
 import HomePage from '@/pages/HomePage'
 import UserPage from '@/pages/UserPage'
 import NewsList from '@/pages/NewsList'
+import UserList from '@/pages/UserList'
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: 'news',
         element: <NewsList />,
+      },
+      {
+        path: 'user-list',
+        element: <UserList />,
       },
     ],
   },

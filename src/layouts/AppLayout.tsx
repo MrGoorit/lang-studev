@@ -29,6 +29,11 @@ const AppLayout = () => {
       icon: <FileOutlined />,
       label: '文章列表',
     },
+    {
+      key: '/user-list',
+      icon: <UserOutlined />,
+      label: '用户列表',
+    },
   ]
 
   return (
