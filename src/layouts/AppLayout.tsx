@@ -15,6 +15,8 @@ const headerStyle: React.CSSProperties = {
 }
 
 const contentStyle: React.CSSProperties = {
+  minHeight: '100%',
+  overflowY: 'scroll',
   padding: '1rem',
   textAlign: 'center',
   color: '#fff',
