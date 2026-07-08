@@ -1,61 +1,44 @@
-import { useState } from 'react'
-import { useQuery } from '@tanstack/react-query'
-import { List, Card, Button } from 'antd'
-import UserApi from '@/api/user'
+import { useState, useCallback } from 'react'
+import { Button } from 'antd'
 
-const UserList = () => {
-  const [page, setPage] = useState<number>(1)
+// 子组件
+function ChildComponent() {
+  console.log('子组件 - ChildComponent 重新渲染！')
   const [count, setCount] = useState<number>(0)
 
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ['users', page],
-    queryFn: () => UserApi.getUsers(page),
-  })
+  // const handleSubClick = useCallback(() => {
+  //   console.log('子组件 - handleSubClick 重新渲染！')
+  //   setCount((num) => num + 1)
+  // }, [])
 
-  const handlePlus = () => {
-    setCount((num) => num + 1)
-    setCount((num) => num + 1)
-    setCount((num) => num + 1)
-    setCount((num) => num + 1)
-    setCount((num) => num + 1)
-    setCount((num) => num + 1)
-    setCount((num) => num + 1)
-    setCount((num) => num + 1)
+  const handleSubClick = () => {
+    console.log('子组件 - handleSubClick 重新渲染！')
     setCount((num) => num + 1)
   }
 
   return (
-    <div className="p-6">
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-2xl font-bold">用户管理列表</h2>
-        <Button type="primary" onClick={() => setPage((p) => p + 1)}>
-          模拟翻页
-        </Button>
-        <Button type="default" onClick={handlePlus}>
-          增加{count}
-        </Button>
-      </div>
-
-      {isLoading && <div className="text-center text-gray-500">加载中...</div>}
-
-      {isError && <div className="text-center text-red-500">加载失败</div>}
-
-      {data && (
-        <List
-          dataSource={data.data}
-          renderItem={(item) => (
-            <List.Item>
-              <Card title={item.first_name + ' ' + item.last_name}>
-                <div className="flex items-center">
-                  <img src={item.avatar} alt={item.first_name} className="w-10 h-10 rounded-full" />
-                </div>
-              </Card>
-            </List.Item>
-          )}
-        />
-      )}
+    <div>
+      <h2>子组件计数器：{count}</h2>
+      <Button onClick={handleSubClick}>增加计数 {count}</Button>
     </div>
   )
 }
 
-export default UserList
+// 父组件
+function ParentComponent() {
+  const [count, setCount] = useState<number>(0)
+
+  console.log('父组件 - ParentComponent 重新渲染！')
+
+  return (
+    <div>
+      <h1>父组件计数器：{count}</h1>
+      <Button onClick={() => setCount((num) => num + 1)}>增加计数 {count}</Button>
+      <div className="mt-3">
+        <ChildComponent />
+      </div>
+    </div>
+  )
+}
+
+export default ParentComponent

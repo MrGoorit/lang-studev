@@ -1,32 +1,16 @@
 import { createBrowserRouter } from 'react-router-dom'
 import AppLayout from '@/layouts/AppLayout'
-import HomePage from '@/pages/HomePage'
-import UserPage from '@/pages/UserPage'
-import NewsList from '@/pages/NewsList'
-import UserList from '@/pages/UserList'
+import { layoutRoutes } from './routes'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <AppLayout />, // 基础布局容器
-    children: [
-      {
-        index: true, // 默认首页
-        element: <HomePage />,
-      },
-      {
-        path: 'user',
-        element: <UserPage />,
-      },
-      {
-        path: 'news',
-        element: <NewsList />,
-      },
-      {
-        path: 'user-list',
-        element: <UserList />,
-      },
-    ],
+    element: <AppLayout />,
+    children: layoutRoutes.map(({ path, index, element }) => ({
+      path,
+      index,
+      element,
+    })),
   },
 ])
 
