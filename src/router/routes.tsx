@@ -1,3 +1,4 @@
+import { lazy, type ReactNode } from 'react'
 import {
   HomeOutlined,
   ReadOutlined,
@@ -5,14 +6,16 @@ import {
   ThunderboltOutlined,
   UserOutlined,
 } from '@ant-design/icons'
-import type { ReactNode } from 'react'
-import HomePage from '@/pages/HomePage'
-import UserPage from '@/pages/UserPage'
-import NewsList from '@/pages/NewsList'
-import UserList from '@/pages/UserList'
-import CallbackMemoPage from '@/pages/CallbackMemoPage'
-import JSX from '@/pages/JSX'
-import Zujian from '@/pages/Zujian'
+
+// 路由级懒加载：首次访问对应路由时才下载 chunk（需配合布局里的 Suspense）
+const HomePage = lazy(() => import('@/pages/HomePage'))
+const NewsList = lazy(() => import('@/pages/NewsList'))
+const UserPage = lazy(() => import('@/pages/UserPage'))
+const UserList = lazy(() => import('@/pages/UserList'))
+const CallbackMemoPage = lazy(() => import('@/pages/CallbackMemoPage'))
+const JSX = lazy(() => import('@/pages/JSX'))
+const Zujian = lazy(() => import('@/pages/Zujian'))
+const StatePage = lazy(() => import('@/pages/StatePage'))
 
 export interface AppRoute {
   path?: string
@@ -71,6 +74,13 @@ export const layoutRoutes: AppRoute[] = [
     label: '组件',
     icon: <ThunderboltOutlined />,
     element: <Zujian />,
+    showInMenu: true,
+  },
+  {
+    path: 'state',
+    label: '组件状态',
+    icon: <ThunderboltOutlined />,
+    element: <StatePage />,
     showInMenu: true,
   },
 ]

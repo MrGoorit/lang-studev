@@ -1,11 +1,11 @@
-import React from 'react'
+import { Suspense, type CSSProperties, type FC } from 'react'
 import { Outlet } from 'react-router-dom'
-import { Layout } from 'antd'
+import { Layout, Spin } from 'antd'
 import SideMenuBar from './components/SideMenuBar'
 
 const { Header, Sider, Content, Footer } = Layout
 
-const headerStyle: React.CSSProperties = {
+const headerStyle: CSSProperties = {
   textAlign: 'center',
   color: '#fff',
   height: 64,
@@ -14,7 +14,7 @@ const headerStyle: React.CSSProperties = {
   backgroundColor: '#4096ff',
 }
 
-const contentStyle: React.CSSProperties = {
+const contentStyle: CSSProperties = {
   minHeight: '100%',
   overflowY: 'scroll',
   padding: '1rem',
@@ -22,27 +22,27 @@ const contentStyle: React.CSSProperties = {
   color: '#333',
 }
 
-const siderStyle: React.CSSProperties = {
+const siderStyle: CSSProperties = {
   width: 240,
   textAlign: 'center',
   color: '#fff',
   backgroundColor: '#1677ff',
 }
 
-const footerStyle: React.CSSProperties = {
+const footerStyle: CSSProperties = {
   textAlign: 'center',
   color: '#fff',
   backgroundColor: '#4096ff',
 }
 
-const layoutStyle = {
+const layoutStyle: CSSProperties = {
   overflow: 'hidden',
   width: '100%',
   maxWidth: '100%',
   height: '100%',
 }
 
-const App: React.FC = () => (
+const AppLayout: FC = () => (
   <Layout style={layoutStyle}>
     <Sider style={siderStyle}>
       <div className="h-16 text-white">React Project</div>
@@ -52,11 +52,19 @@ const App: React.FC = () => (
     <Layout>
       <Header style={headerStyle}>Header</Header>
       <Content style={contentStyle}>
-        <Outlet />
+        <Suspense
+          fallback={
+            <div className="flex h-full items-center justify-center py-16">
+              <Spin size="large" />
+            </div>
+          }
+        >
+          <Outlet />
+        </Suspense>
       </Content>
       <Footer style={footerStyle}>Footer</Footer>
     </Layout>
   </Layout>
 )
 
-export default App
+export default AppLayout
