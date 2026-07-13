@@ -12,6 +12,7 @@ import NewsList from '@/pages/NewsList'
 import UserList from '@/pages/UserList'
 import CallbackMemoPage from '@/pages/CallbackMemoPage'
 import JSX from '@/pages/JSX'
+import Zujian from '@/pages/Zujian'
 
 export interface AppRoute {
   path?: string
@@ -63,6 +64,13 @@ export const layoutRoutes: AppRoute[] = [
     label: 'JSX',
     icon: <ThunderboltOutlined />,
     element: <JSX />,
+    showInMenu: true,
+  },
+  {
+    path: 'zujian',
+    label: '组件',
+    icon: <ThunderboltOutlined />,
+    element: <Zujian />,
     showInMenu: true,
   },
 ]

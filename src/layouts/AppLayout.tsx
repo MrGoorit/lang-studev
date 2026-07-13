@@ -19,8 +19,7 @@ const contentStyle: React.CSSProperties = {
   overflowY: 'scroll',
   padding: '1rem',
   textAlign: 'center',
-  color: '#fff',
-  backgroundColor: '"#0958d9',
+  color: '#333',
 }
 
 const siderStyle: React.CSSProperties = {
