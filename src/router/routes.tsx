@@ -16,6 +16,7 @@ const CallbackMemoPage = lazy(() => import('@/pages/CallbackMemoPage'))
 const JSX = lazy(() => import('@/pages/JSX'))
 const Zujian = lazy(() => import('@/pages/Zujian'))
 const StatePage = lazy(() => import('@/pages/StatePage'))
+const PropsPage = lazy(() => import('@/pages/PropsPage')) // props 传参示例
 
 export interface AppRoute {
   path?: string
@@ -78,9 +79,16 @@ export const layoutRoutes: AppRoute[] = [
   },
   {
     path: 'state',
-    label: '组件状态',
+    label: 'State 状态',
     icon: <ThunderboltOutlined />,
     element: <StatePage />,
+    showInMenu: true,
+  },
+  {
+    path: 'props',
+    label: 'Props 传参',
+    icon: <ThunderboltOutlined />,
+    element: <PropsPage />,
     showInMenu: true,
   },
 ]
