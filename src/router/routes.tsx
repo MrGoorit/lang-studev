@@ -1,10 +1,17 @@
-import { HomeOutlined, ReadOutlined, TeamOutlined, ThunderboltOutlined, UserOutlined } from '@ant-design/icons'
+import {
+  HomeOutlined,
+  ReadOutlined,
+  TeamOutlined,
+  ThunderboltOutlined,
+  UserOutlined,
+} from '@ant-design/icons'
 import type { ReactNode } from 'react'
 import HomePage from '@/pages/HomePage'
 import UserPage from '@/pages/UserPage'
 import NewsList from '@/pages/NewsList'
 import UserList from '@/pages/UserList'
 import CallbackMemoPage from '@/pages/CallbackMemoPage'
+import JSX from '@/pages/JSX'
 
 export interface AppRoute {
   path?: string
@@ -49,6 +56,13 @@ export const layoutRoutes: AppRoute[] = [
     label: 'Callback & Memo',
     icon: <ThunderboltOutlined />,
     element: <CallbackMemoPage />,
+    showInMenu: true,
+  },
+  {
+    path: 'jsx',
+    label: 'JSX',
+    icon: <ThunderboltOutlined />,
+    element: <JSX />,
     showInMenu: true,
   },
 ]

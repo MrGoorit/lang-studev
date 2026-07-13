@@ -1,6 +1,9 @@
 // 中文：JSX（JavaScript XML）允许我们在 JavaScript 中编写 HTML 元素，并将它们放置在 DOM 中，
 // 而无需使用 createElement() 和/或 appendChild() 方法。
-import React, { type JSX } from 'react'
+import type { JSX } from 'react'
+
+import styles from './JSX.module.css'
+import './index.css'
 
 // 语法规则
 // 1. JSX 标签必须闭合。
@@ -46,6 +49,61 @@ function LieBiaoXuanRan(): JSX.Element {
           <li key={number}>{number}</li>
         ))}
       </ul>
+    </div>
+  )
+}
+
+// 样式处理
+
+// 1. 内联样式：使用 style 属性来设置样式。
+function YanSeChuLi(): JSX.Element {
+  return (
+    <div>
+      <h1>样式处理</h1>
+      <p
+        style={{
+          color: 'red',
+          fontSize: '20px',
+          backgroundColor: 'blue',
+          padding: '10px',
+          borderRadius: '5px',
+        }}
+      >
+        这是一个红色的段落。
+      </p>
+    </div>
+  )
+}
+
+// 2. 外部样式：使用 CSS 文件来设置样式。
+function WaiBuYangShi(): JSX.Element {
+  return (
+    <div>
+      <h1>外部样式</h1>
+      <p className="red-paragraph">这是一个红色的段落。</p>
+    </div>
+  )
+}
+
+// 3. CSS Modules：使用 CSS Modules 来设置样式。
+function CSSModules(): JSX.Element {
+  return (
+    <div>
+      <h1>CSS Modules</h1>
+      <p className={styles['red-paragraph']}>这是一个红色的段落。</p>
+    </div>
+  )
+}
+
+export default function JSX(): JSX.Element {
+  return (
+    <div className="jsx-page">
+      <BiaoDaShiQianRu />
+      <TiaoJianXuanRan />
+      <LieBiaoXuanRan />
+      <YanSeChuLi />
+      <WaiBuYangShi />
+      <CSSModules />
     </div>
   )
 }
